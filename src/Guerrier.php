@@ -1,8 +1,8 @@
 <?php
+require_once 'Personnage.php';
 
-class Guerrier
+class Guerrier extends Personnage
 {
-  private $health;
   private $strength;
 
   public function __construct(
@@ -11,17 +11,6 @@ class Guerrier
   ) {
     $this->setHealth($health);
     $this->strength = $strength;
-  }
-
-  public function getHealth(): int
-  {
-    return $this->health;
-  }
-
-  public function setHealth(int $health): self
-  {
-    $this->health = $health;
-    return $this;
   }
 
   public function getStrength(): int
@@ -33,5 +22,10 @@ class Guerrier
   {
     $this->strength = $strength;
     return $this;
+  }
+
+  public function calculeDegats(): int
+  {
+    return intval($this->strength / 5);
   }
 }
